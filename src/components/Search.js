@@ -6,8 +6,8 @@ const Search = () => {
 	console.log('I RUN WITH EVERY RENDER');
 
 	useEffect(() => {
-		console.log('I ONLY RUN ONCE');
-	}, []);
+		console.log('I ONLY RUN AFTER EVERY RENDER AND AT INITIAL RENDER');
+	});
 
 	return (
 		<div className="ui form">
