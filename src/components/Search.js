@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 const Search = () => {
 	const [term, setTerm] = useState('');
 
+	console.log('I RUN WITH EVERY RENDER');
+
 	useEffect(() => {
-		console.log('asdfasdfasdas');
-	});
+		console.log('I ONLY RUN ONCE');
+	}, []);
 
 	return (
 		<div className="ui form">
