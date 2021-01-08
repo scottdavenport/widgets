@@ -20,22 +20,26 @@ const Search = () => {
 			setResults(data.query.search);
 		};
 
-		const timeoutId = setTimeout(() => {
-			if (term) {
-				search();
-			}
-		}, 1000);
+		if (term && !results.length) {
+			search();
+		} else {
+			const timeoutId = setTimeout(() => {
+				if (term) {
+					search();
+				}
+			}, 1000);
 
-		console.log('Initial rendering or re-rendering');
+			console.log('Initial rendering or re-rendering');
 
-		// everything is run initiall
-		// below is the clean-up function that is set on
-		// first render.  It will be run before any other code
-		// on the next rendering of component.
-		return () => {
-			clearTimeout(timeoutId);
-			console.log('CLEANUP');
-		};
+			// everything is run initially
+			// below is the clean-up function that is set on
+			// first render.  It will be run before any other code
+			// on the next rendering of component.
+			return () => {
+				clearTimeout(timeoutId);
+				console.log('CLEANUP');
+			};
+		}
 	}, [term]);
 
 	const renderedResults = results.map((result) => {
