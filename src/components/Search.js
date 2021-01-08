@@ -24,7 +24,7 @@ const Search = () => {
 			if (term) {
 				search();
 			}
-		}, 500);
+		}, 1000);
 
 		console.log('Initial rendering or re-rendering');
 
@@ -33,6 +33,7 @@ const Search = () => {
 		// first render.  It will be run before any other code
 		// on the next rendering of component.
 		return () => {
+			clearTimeout(timeoutId);
 			console.log('CLEANUP');
 		};
 	}, [term]);
