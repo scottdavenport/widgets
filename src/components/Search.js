@@ -25,6 +25,16 @@ const Search = () => {
 				search();
 			}
 		}, 500);
+
+		console.log('Initial rendering or re-rendering');
+
+		// everything is run initiall
+		// below is the clean-up function that is set on
+		// first render.  It will be run before any other code
+		// on the next rendering of component.
+		return () => {
+			console.log('CLEANUP');
+		};
 	}, [term]);
 
 	const renderedResults = results.map((result) => {
