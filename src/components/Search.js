@@ -40,6 +40,7 @@ const Search = () => {
 				console.log('CLEANUP');
 			};
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [term]);
 
 	const renderedResults = results.map((result) => {
