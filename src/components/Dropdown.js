@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
 	const [open, setOpen] = useState(false);
@@ -6,8 +6,8 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 	useEffect(() => {
 		document.body.addEventListener(
 			'click',
-			() => {
-				console.log('BODY CLICKED!!!');
+			(event) => {
+				console.log(event.target);
 				setOpen(false);
 			},
 			{ capture: true }
@@ -25,7 +25,6 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 				key={option.value}
 				className="item"
 				onClick={() => {
-					console.log('ITEM CLICKED');
 					onSelectedChange(option);
 				}}
 			>
@@ -40,7 +39,6 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 				<label className="label">Select a Color</label>
 				<div
 					onClick={() => {
-						console.log('DROPDOWN CLICKED');
 						setOpen(!open);
 					}}
 					className={`ui selection dropdown ${open ? 'visible active' : ''}`}
