@@ -1,8 +1,10 @@
 import React from 'react';
-import Accordion from './components/Accordion';
-import Search from './components/Search';
+// import Accordion from './components/Accordion';
+// import Search from './components/Search';
+import Dropdown from './components/Dropdown';
 
 // manually created array
+// eslint-disable-next-line no-unused-vars
 const items = [
 	{
 		title: 'What is React?',
@@ -18,11 +20,27 @@ const items = [
 	},
 ];
 
+const options = [
+	{
+		label: 'The Color Red',
+		value: 'red',
+	},
+	{
+		label: 'The Color Green',
+		value: 'green',
+	},
+	{
+		label: 'A shade of Blue',
+		value: 'blue',
+	},
+];
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
 	return (
 		<div>
 			{/* <Accordion items={items} /> */}
-			<Search />
+			<Dropdown options={options} />
 		</div>
 	);
 };
