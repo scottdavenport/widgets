@@ -2,16 +2,27 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
 	const [open, setOpen] = useState(false);
+	const ref = useRef();
 
 	useEffect(() => {
-		document.body.addEventListener(
-			'click',
-			(event) => {
-				console.log(event.target);
-				setOpen(false);
-			},
-			{ capture: true }
-		);
+		const onBodyClick = (event) => {
+			if (ref.current && ref.current.contains(event.target)) {
+				return;
+			}
+
+			setOpen(false);
+
+			// console.log(event.target);
+		};
+
+		document.body.addEventListener('click', onBodyClick);
+		console.log(ref.current);
+		console.log('Event Listener Added');
+
+		return () => {
+			document.body.removeEventListener('click', onBodyClick);
+			console.log('Event Listener Removed');
+		};
 	}, []);
 
 	const renderedOptions = options.map((option) => {
