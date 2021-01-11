@@ -11,17 +11,12 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
 			}
 
 			setOpen(false);
-
-			// console.log(event.target);
 		};
 
 		document.body.addEventListener('click', onBodyClick);
-		console.log(ref.current);
-		console.log('Event Listener Added');
 
 		return () => {
 			document.body.removeEventListener('click', onBodyClick);
-			console.log('Event Listener Removed');
 		};
 	}, []);
 
