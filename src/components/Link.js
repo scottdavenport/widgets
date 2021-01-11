@@ -5,6 +5,10 @@ const Link = ({ className, href, children }) => {
 		// prevents a full page reload
 		event.preventDefault();
 		window.history.pushState({}, '', href);
+
+		// communicates to components the route has changed
+		const navEvent = new PopStateEvent('popstate');
+		window.dispatchEvent(navEvent);
 	};
 
 	return (
