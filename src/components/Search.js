@@ -35,15 +35,27 @@ const Search = () => {
 
 	const renderedResults = results.map((result) => {
 		return (
-			<div key={result.pageid} className="item">
-				<div className="right floated content">
-					<a className="ui button" href={`https://en.wikipedia.org?curid=${result.pageid}`}>
-						Go
-					</a>
-				</div>
-				<div className="content">
-					<div className="header">{result.title}</div>
-					<span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+			<div className="ui">
+				<div key={result.pageid} className="item">
+					<table className="ui celled table">
+						<thead>
+							<tr>
+								<th>{result.title}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td data-label="Name">
+									<span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+								</td>
+								<td data-label="Name">
+									<a className="ui button" href={`https://en.wikipedia.org?curid=${result.pageid}`}>
+										Go
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		);
@@ -51,10 +63,15 @@ const Search = () => {
 
 	return (
 		<div>
-			<div className="ui form">
-				<div className="field">
-					<label>Enter Search Term</label>
-					<input className="input" value={term} onChange={(e) => setTerm(e.target.value)} />
+			<div className="ui form input">
+				<div className="ui icon input">
+					<input
+						style={{ width: '500px' }}
+						className="ui input text"
+						value={term}
+						onChange={(e) => setTerm(e.target.value)}
+					/>
+					<i className="search icon"></i>
 				</div>
 			</div>
 			<div className="ui celled list">{renderedResults}</div>
