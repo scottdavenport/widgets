@@ -4,6 +4,7 @@ import Dropdown from './components/Dropdown';
 import Search from './components/Search';
 import Translate from './components/Translate';
 import Route from './components/Route';
+import Header from './components/Header';
 
 // manually created array
 // eslint-disable-next-line no-unused-vars
@@ -43,6 +44,7 @@ export default () => {
 
 	return (
 		<div>
+			<Header />
 			<Route path="/">
 				<Accordion items={items} />
 			</Route>
